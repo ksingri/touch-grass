@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nope.</title>
+  <link rel="stylesheet" href="blocked.css">
+</head>
+<body data-scene="forest">
+
+  <!-- Nature landscape silhouette -->
+  <svg class="landscape" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 400" preserveAspectRatio="none">
+    <!-- Far mountains -->
+    <path d="M0,400 L0,240 Q100,140 200,210 Q350,80 500,190 Q650,60 800,180 Q950,50 1100,170 Q1250,100 1440,200 L1440,400 Z" fill="rgba(255,255,255,0.025)"/>
+    <!-- Near mountains -->
+    <path d="M0,400 L0,280 Q80,180 180,260 Q280,150 400,240 Q520,130 640,250 Q760,160 880,240 Q1000,140 1120,250 Q1240,180 1360,260 Q1400,250 1440,270 L1440,400 Z" fill="rgba(255,255,255,0.04)"/>
+    <!-- Trees -->
+    <g fill="rgba(255,255,255,0.035)">
+      <!-- Tree clusters -->
+      <polygon points="60,300 78,230 96,300"/>
+      <polygon points="75,300 88,250 101,300"/>
+      <polygon points="200,310 222,230 244,310"/>
+      <polygon points="220,310 235,260 250,310"/>
+      <polygon points="380,305 398,240 416,305"/>
+      <polygon points="540,300 560,225 580,300"/>
+      <polygon points="555,300 568,255 581,300"/>
+      <polygon points="720,305 742,235 764,305"/>
+      <polygon points="740,305 752,265 764,305"/>
+      <polygon points="900,300 918,240 936,300"/>
+      <polygon points="1050,310 1072,235 1094,310"/>
+      <polygon points="1070,310 1082,270 1094,310"/>
+      <polygon points="1220,305 1238,245 1256,305"/>
+      <polygon points="1380,300 1395,250 1410,300"/>
+    </g>
+    <!-- Ground line -->
+    <path d="M0,330 Q200,310 400,325 Q600,315 800,330 Q1000,318 1200,328 Q1350,320 1440,330 L1440,400 L0,400 Z" fill="rgba(255,255,255,0.02)"/>
+  </svg>
+
+  <div class="container">
+    <div class="emoji" id="emoji"></div>
+    <h1 id="message"></h1>
+    <p class="sub" id="sub-message"></p>
+    <p class="quote" id="quote"></p>
+
+    <div class="blocked-site" id="blocked-site"></div>
+    <div class="stats" id="stats"></div>
+
+    <button class="shuffle-btn" id="shuffle" title="Show another message">&#x21bb;</button>
+
+    <div class="override-section">
+      <button class="override-trigger" id="override-trigger">
+        I genuinely need to access this site
+      </button>
+
+      <div class="override-form" id="override-form" style="display: none;">
+        <p class="override-warning">
+          Are you sure? Type <strong>"let me through"</strong> to get 5 minutes of access.
+        </p>
+        <input type="text" id="override-input" placeholder="Type the phrase..." autocomplete="off" spellcheck="false">
+        <button class="override-submit" id="override-submit" disabled>Override</button>
+      </div>
+
+      <div class="override-active" id="override-active" style="display: none;">
+        <p>Override active! Redirecting in <span id="countdown">3</span>...</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="blocked.js"></script>
+</body>
+</html>
