@@ -9,6 +9,15 @@ const BLOCKED_DOMAINS = [
 
 const REDDIT_ALLOWED_PATHS = ['/r/formula1', '/r/formuladank'];
 
+function isRedditPostUrl(url) {
+  try {
+    const path = new URL(url).pathname.toLowerCase();
+    return /^\/r\/[^/]+\/comments\/[^/]+/.test(path);
+  } catch (e) {
+    return false;
+  }
+}
+
 // In-memory cache for synchronous access in blocking listener
 let overrides = {};
 let blockedToday = { date: '', count: 0 };
@@ -86,8 +95,8 @@ function handleRequest(details) {
     return {};
   }
 
-  // Allow whitelisted Reddit subreddits
-  if (domain === 'reddit.com' && isRedditAllowed(url)) {
+  // Allow whitelisted Reddit subreddits and individual post pages
+  if (domain === 'reddit.com' && (isRedditAllowed(url) || isRedditPostUrl(url))) {
     return {};
   }
 

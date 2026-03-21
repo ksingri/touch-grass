@@ -3,9 +3,11 @@
 
   function isAllowedPath(path) {
     var lower = path.toLowerCase();
-    return ALLOWED_PATHS.some(function (allowed) {
+    if (ALLOWED_PATHS.some(function (allowed) {
       return lower === allowed || lower.startsWith(allowed + '/');
-    });
+    })) return true;
+    // Allow individual post pages (e.g. from Google search results)
+    return /^\/r\/[^/]+\/comments\/[^/]+/.test(lower);
   }
 
   function checkAndRedirect() {

@@ -6,7 +6,7 @@ var BLOCKED_SITES = [
   {
     domain: 'reddit.com',
     name: 'Reddit',
-    exceptions: ['r/formula1', 'r/formuladank']
+    exceptions: ['r/formula1', 'r/formuladank', 'individual post pages']
   }
 ];
 
