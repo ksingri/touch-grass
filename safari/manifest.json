@@ -4,8 +4,6 @@
   "version": "1.0.0",
   "description": "Block doom scrolling sites and reclaim your peace of mind.",
   "permissions": [
-    "webRequest",
-    "webRequestBlocking",
     "storage",
     "*://*.linkedin.com/*",
     "*://*.instagram.com/*",
@@ -15,7 +13,8 @@
     "*://*.reddit.com/*"
   ],
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["background.js"],
+    "persistent": false
   },
   "browser_action": {
     "default_popup": "popup.html",
@@ -30,15 +29,21 @@
   },
   "content_scripts": [
     {
+      "matches": [
+        "*://*.linkedin.com/*",
+        "*://*.instagram.com/*",
+        "*://*.threads.net/*",
+        "*://*.threads.com/*",
+        "*://*.drudgereport.com/*",
+        "*://*.reddit.com/*"
+      ],
+      "js": ["blocker.js"],
+      "run_at": "document_start"
+    },
+    {
       "matches": ["*://*.reddit.com/*"],
       "js": ["reddit-guard.js"],
       "run_at": "document_idle"
     }
-  ],
-  "web_accessible_resources": [
-    "blocked.html",
-    "blocked.css",
-    "blocked.js"
-  ],
-  "incognito": "spanning"
+  ]
 }
